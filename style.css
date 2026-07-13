@@ -1,11 +1,11 @@
-/* --- Hệ thống màu sắc & Biến cấu trúc --- */
+/* --- Hệ thống biến màu & Cấu trúc thiết kế --- */
 :root {
-  --primary: #0284c7;       /* Xanh bầu trời đậm - uy tín, chuyên nghiệp */
+  --primary: #0284c7;         /* Xanh Slate Blue hiện đại, uy tín */
   --primary-hover: #0369a1;
-  --accent: #10b981;        /* Xanh Emerald - tạo điểm nhấn năng động, công nghệ */
-  --gradient-hero: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); /* Gradient tối sang trọng */
+  --accent: #10b981;          /* Ngọc lục bảo tạo điểm nhấn công nghệ */
+  --gradient-hero: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); /* Nền tối sang trọng */
   
-  /* Màu nền và chữ */
+  /* Màu nền và phân cấp chữ */
   --bg-main: #f8fafc;
   --bg-card: #ffffff;
   --text-title: #0f172a;
@@ -13,16 +13,16 @@
   --text-muted: #64748b;
   --border: #e2e8f0;
   
-  /* Hiệu ứng đổ bóng và bo góc chuyên nghiệp */
+  /* Thiết lập bo góc & Đổ bóng chuyên nghiệp */
   --radius-lg: 20px;
   --radius-md: 12px;
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
-  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.06), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* --- Reset & Base Styles --- */
+/* --- Reset cấu trúc cơ bản --- */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -44,11 +44,11 @@ a {
   transition: var(--transition);
 }
 
-/* --- Navigation Bar (Hiệu ứng kính mờ có chứa Widget Ngày Giờ) --- */
+/* --- Thanh điều hướng Navbar (Hiệu ứng kính mờ) --- */
 .navbar {
   position: sticky;
   top: 0;
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
@@ -85,20 +85,32 @@ a {
   box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
 }
 
-/* --- Tiện ích Ngày Giờ ở góc phải trên cùng --- */
+/* --- Tiện ích Ngày Giờ góc trên bên phải --- */
 .datetime-widget {
   position: absolute;
-  right: 20px;
+  right: 24px;
   top: 50%;
   transform: translateY(-50%);
   text-align: right;
   line-height: 1.3;
 }
 
-/* --- Hero Section (Đã THU HẸP vừa vặn theo yêu cầu) --- */
+.datetime-widget .time-text {
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 0.95rem;
+}
+
+.datetime-widget .date-text {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* --- Phần giới thiệu đầu trang (Đã thu gọn vừa vặn) --- */
 .hero-section {
   background: var(--gradient-hero);
-  padding: 50px 20px 40px; /* Thu hẹp từ 100px xuống 50px để vừa vặn */
+  padding: 50px 20px 40px;
   text-align: center;
   position: relative;
 }
@@ -106,7 +118,7 @@ a {
 .avatar-wrapper {
   position: relative;
   display: inline-block;
-  margin-bottom: 16px; /* Giảm khoảng cách hạ xuống chữ */
+  margin-bottom: 16px;
 }
 
 .avatar-wrapper::after {
@@ -116,12 +128,12 @@ a {
   border-radius: 50%;
   background: linear-gradient(45deg, var(--primary), var(--accent));
   z-index: 1;
-  animation: spin 8s linear infinite;
+  animation: spinWeb 12s linear infinite;
 }
 
 .avatar {
-  width: 110px;  /* Thu nhỏ từ 160px xuống 110px cho cân đối */
-  height: 110px; /* Thu nhỏ từ 160px xuống 110px cho cân đối */
+  width: 110px;
+  height: 110px;
   border-radius: 50%;
   border: 4px solid #0f172a;
   box-shadow: var(--shadow-lg);
@@ -131,36 +143,36 @@ a {
   transition: var(--transition);
 }
 
-@keyframes spin {
+@keyframes spinWeb {
   100% { transform: rotate(360deg); }
 }
 
 .hero-section h1 {
-  font-size: 2.2rem; /* Giảm từ 3rem xuống 2.2rem để bớt thô */
+  font-size: 2.2rem;
   font-weight: 800;
   color: #ffffff;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   margin-bottom: 8px;
 }
 
 .hero-subtitle {
-  font-size: 1rem; /* Điều chỉnh font chữ vừa vặn */
+  font-size: 1rem;
   color: #94a3b8;
   font-style: italic;
   max-width: 500px;
   margin: 0 auto;
 }
 
-/* --- Layout Container --- */
+/* --- Thùng chứa nội dung chính --- */
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 60px 20px;
 }
 
-/* --- Thanh tìm kiếm cách điệu --- */
+/* --- Thanh tìm kiếm thông minh --- */
 .search-wrapper {
-  margin: -70px auto 40px; /* Điều chỉnh lại khoảng cách đè lên Header cho khít */
+  margin: -70px auto 40px;
   max-width: 600px;
   position: relative;
   z-index: 10;
@@ -168,7 +180,7 @@ a {
 
 .search-input {
   width: 100%;
-  padding: 18px 30px;
+  padding: 16px 28px;
   font-size: 1rem;
   border: 1px solid var(--border);
   border-radius: 9999px;
@@ -183,12 +195,12 @@ a {
   box-shadow: 0 0 0 5px rgba(2, 132, 199, 0.15);
 }
 
-/* --- Tiêu đề phân khu --- */
+/* --- Tiêu đề các mục --- */
 .section-title {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 700;
   color: var(--text-title);
-  margin: 50px 0 24px;
+  margin: 40px 0 24px;
   position: relative;
   text-align: left;
 }
@@ -198,25 +210,25 @@ a {
   position: absolute;
   bottom: -6px;
   left: 0;
-  width: 50px;
+  width: 45px;
   height: 5px;
   background: linear-gradient(to right, var(--primary), var(--accent));
   border-radius: 10px;
 }
 
-/* --- Cấu trúc lưới thẻ (Grid Layout) --- */
+/* --- Lưới hiển thị danh sách thẻ (Grid Layout) --- */
 .grid-layout {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 30px;
-  margin-bottom: 50px;
+  gap: 24px;
+  margin-bottom: 45px;
 }
 
 .card {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 30px;
+  padding: 28px;
   text-align: left;
   box-shadow: var(--shadow-md);
   transition: var(--transition);
@@ -226,9 +238,9 @@ a {
 }
 
 .card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-6px);
   box-shadow: var(--shadow-lg);
-  border-color: rgba(2, 132, 199, 0.3);
+  border-color: rgba(2, 132, 199, 0.25);
 }
 
 .card-tag {
@@ -237,14 +249,14 @@ a {
   text-transform: uppercase;
   color: var(--accent);
   letter-spacing: 0.08em;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .card h3 {
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: var(--text-title);
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .card p {
@@ -253,7 +265,7 @@ a {
   flex-grow: 1;
 }
 
-/* --- Khung trưng bày ảnh (Gallery) --- */
+/* --- Khu vực trưng bày ảnh Gallery --- */
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -278,17 +290,17 @@ a {
 
 .gallery-item:hover img {
   transform: scale(1.06);
-  filter: saturate(1.1) brightness(0.95);
+  filter: brightness(0.95);
 }
 
 .hidden {
   display: none !important;
 }
 
-/* --- Responsive cho thiết bị di động --- */
+/* --- Tối ưu hóa trên giao diện Mobile --- */
 @media (max-width: 850px) {
   .datetime-widget {
-    display: none; /* Ẩn widget ngày giờ trên màn hình nhỏ để tránh đè chữ menu */
+    display: none; /* Ẩn ngày giờ trên màn hình nhỏ để tránh chồng lấn chữ */
   }
 }
 
