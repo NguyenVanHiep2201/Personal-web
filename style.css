@@ -328,3 +328,19 @@ a {
   .search-wrapper { margin-top: -40px; margin-bottom: 40px; }
   .grid-layout { grid-template-columns: 1fr; }
 }
+/* --- Tiện ích Ngày Giờ (Date Time Widget) --- */
+.datetime-widget {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: right;
+  line-height: 1.3;
+}
+
+/* Ẩn widget ngày giờ trên màn hình điện thoại nhỏ để không đè vào menu */
+@media (max-width: 850px) {
+  .datetime-widget {
+    display: none; 
+  }
+}
