@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bài viết 1 - Cảm ơn và Xin lỗi</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <ul class="nav-links">
+      <li><a href="index.html">Trang chủ</a></li>
+      <li><a href="about.html">Giới thiệu</a></li>
+      <li><a href="blogs.html" class="active">Bài viết</a></li>
+      <li><a href="projects.html">Dự án</a></li>
+      <li><a href="contact.html">Liên hệ</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <div class="article-container">
+      <h1 style="margin-bottom: 20px;">Bài viết 1: Cảm ơn và xin lỗi</h1>
+
+      <div class="article-content">
+        <p>Hai câu nói “CẢM ƠN” và “XIN LỖI” là lời mở đầu, cũng có thể là kết thúc.</p>
+        <p>Cảm ơn thể hiện sự biết ơn của chúng ta, là chiếc cầu nối để ta gắn kết với thế giới, với cộng đồng, với những mối quan hệ.</p>
+        <p>Xin lỗi. Trong quá trình trưởng thành, dù vô tình hay cố tình có thể chúng ta đã, đang, sẽ làm tổn thương 1 ai đó...</p>
+        <p>Luôn nhắc nhở bản thân hãy cố gắng thực hành nói lời cảm ơn và xin lỗi đúng lúc, đúng cách, và thật lòng...</p>
+      </div>
+
+      <!-- Tương tác -->
+      <div class="interactions">
+        <button class="reaction-btn" onclick="react('heart')">❤️ <span id="heartCount">0</span></button>
+        <button class="reaction-btn" onclick="react('like')">👍 <span id="likeCount">0</span></button>
+        <button class="reaction-btn" onclick="react('dislike')">👎 <span id="dislikeCount">0</span></button>
+        <div style="margin-left: auto;">Tổng tương tác: <strong id="totalReactions">0</strong></div>
+      </div>
+
+      <!-- Bình luận -->
+      <div class="comment-section">
+        <h3 style="margin-bottom: 10px;">Bình luận</h3>
+        <textarea id="commentInput" rows="3" placeholder="Nhập bình luận của bạn..."></textarea>
+        <button onclick="addComment()">Gửi bình luận</button>
+        <div class="comments-list" id="commentsList"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Firebase Script -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
+    import { getDatabase, ref, onValue, update, push, set } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCtPzaCgVhry6kfoXgivm0H0781opVW2p4",
+      authDomain: "person-page.firebaseapp.com",
+      databaseURL: "https://person-page-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "person-page",
+      storageBucket: "person-page.appspot.com",
+      messagingSenderId: "611998150940",
+      appId: "1:611998150940:web:2431d0ac876e0783e94ad9"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    const postId = 'post1';
+
+    function fetchReactions() {
+      const reactionsRef = ref(db, 'reactions/' + postId);
+      onValue(reactionsRef, (snapshot) => {
+        const data = snapshot.val() || { heart: 0, like: 0, dislike: 0 };
+        document.getElementById('heartCount').innerText = data.heart || 0;
+        document.getElementById('likeCount').innerText = data.like || 0;
+        document.getElementById('dislikeCount').innerText = data.dislike || 0;
+        document.getElementById('totalReactions').innerText = (data.heart || 0) + (data.like || 0) + (data.dislike || 0);
+      });
+    }
+
+    window.react = function(type) {
+      const reactionsRef = ref(db, 'reactions/' + postId);
+      onValue(reactionsRef, (snapshot) => {
+        const current = snapshot.val() || { heart: 0, like: 0, dislike: 0 };
+        current[type] = (current[type] || 0) + 1;
+        update(reactionsRef, current);
+      }, { onlyOnce: true });
+    }
+
+    window.addComment = function () {
+      const input = document.getElementById('commentInput');
+      const text = input.value.trim();
+      if (!text) return;
+      const commentRef = push(ref(db, 'comments/' + postId));
+      set(commentRef, { text: text, time: new Date().toISOString() });
+      input.value = '';
+    }
+
+    function fetchComments() {
+      const commentsRef = ref(db, 'comments/' + postId);
+      onValue(commentsRef, (snapshot) => {
+        const comments = snapshot.val() || {};
+        const container = document.getElementById('commentsList');
+        container.innerHTML = '';
+        const sorted = Object.values(comments).sort((a, b) => new Date(b.time) - new Date(a.time));
+        sorted.forEach(comment => {
+          const div = document.createElement('div');
+          div.className = 'comment';
+          div.innerHTML = `<strong>${new Date(comment.time).toLocaleString()}</strong><br>${comment.text}`;
+          container.appendChild(div);
+        });
+      });
+    }
+
+    fetchReactions();
+    fetchComments();
+  </script>
+</body>
+</html>
