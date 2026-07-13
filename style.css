@@ -1,24 +1,26 @@
-/* --- Hệ thống biến màu & Cấu trúc thiết kế --- */
+/* --- Hệ thống màu sắc & Biến cấu trúc Dark Mode --- */
 :root {
-  --primary: #0284c7;         /* Xanh Slate Blue hiện đại, uy tín */
-  --primary-hover: #0369a1;
-  --accent: #10b981;          /* Ngọc lục bảo tạo điểm nhấn công nghệ */
-  --gradient-hero: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); /* Nền tối sang trọng */
+  /* Tông màu Neon tạo điểm nhấn công nghệ */
+  --primary: #a855f7;         /* Tím Neon đậm chất lập trình và công nghệ */
+  --primary-hover: #c084fc;   /* Tím sáng hơn khi tương tác */
+  --accent: #3b82f6;          /* Xanh Cyan làm điểm nhấn phụ trợ */
+  --gradient-hero: linear-gradient(135deg, #090514 0%, #120a2a 100%); /* Nền tối sang trọng */
   
-  /* Màu nền và phân cấp chữ */
-  --bg-main: #f8fafc;
-  --bg-card: #ffffff;
-  --text-title: #0f172a;
-  --text-body: #334155;
-  --text-muted: #64748b;
-  --border: #e2e8f0;
+  /* Hệ thống màu nền và chữ chuyên dụng cho môi trường tối */
+  --bg-main: #0b0717;         /* Nền tổng thể tối sâu chống mỏi mắt */
+  --bg-card: #130d26;         /* Nền của các thẻ card dự án/bài viết */
+  --text-title: #f8fafc;      /* Chữ tiêu đề trắng sáng nổi bật */
+  --text-body: #cbd5e1;       /* Chữ nội dung xám sáng dễ đọc */
+  --text-muted: #94a3b8;      /* Chữ mờ phụ trợ */
+  --border: #241b42;          /* Viền tối đồng bộ màu nền */
   
-  /* Thiết lập bo góc & Đổ bóng chuyên nghiệp */
+  /* Thiết lập bo góc & Đổ bóng phát sáng (Glow Effect) */
   --radius-lg: 20px;
   --radius-md: 12px;
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
-  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.06), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  /* Hiệu ứng phát sáng nhẹ màu tím huyền ảo xung quanh khối hộp */
+  --shadow-lg: 0 10px 30px -5px rgba(168, 85, 247, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -44,11 +46,11 @@ a {
   transition: var(--transition);
 }
 
-/* --- Thanh điều hướng Navbar (Hiệu ứng kính mờ) --- */
+/* --- Thanh điều hướng Navbar (Hiệu ứng kính mờ tối) --- */
 .navbar {
   position: sticky;
   top: 0;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(11, 7, 23, 0.75); /* Đồng bộ nền tối bán trong suốt */
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
@@ -75,14 +77,14 @@ a {
 }
 
 .nav-links a:hover {
-  color: var(--primary);
-  background: rgba(2, 132, 199, 0.08);
+  color: var(--primary-hover);
+  background: rgba(168, 85, 247, 0.1);
 }
 
 .nav-links a.active {
   background: var(--primary);
   color: white;
-  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+  box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4);
 }
 
 /* --- Tiện ích Ngày Giờ góc trên bên phải --- */
@@ -97,8 +99,9 @@ a {
 
 .datetime-widget .time-text {
   font-weight: 700;
-  color: var(--primary);
+  color: var(--primary-hover);
   font-size: 0.95rem;
+  text-shadow: 0 0 8px rgba(168, 85, 247, 0.5); /* Hiệu ứng đèn LED phát sáng */
 }
 
 .datetime-widget .date-text {
@@ -107,12 +110,13 @@ a {
   font-weight: 500;
 }
 
-/* --- Phần giới thiệu đầu trang (Đã thu gọn vừa vặn) --- */
+/* --- Phần giới thiệu đầu trang (Hero Section tối) --- */
 .hero-section {
   background: var(--gradient-hero);
   padding: 50px 20px 40px;
   text-align: center;
   position: relative;
+  border-bottom: 1px solid var(--border);
 }
 
 .avatar-wrapper {
@@ -135,7 +139,7 @@ a {
   width: 110px;
   height: 110px;
   border-radius: 50%;
-  border: 4px solid #0f172a;
+  border: 4px solid #090514;
   box-shadow: var(--shadow-lg);
   object-fit: cover;
   position: relative;
@@ -153,6 +157,7 @@ a {
   color: #ffffff;
   letter-spacing: -0.02em;
   margin-bottom: 8px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
 
 .hero-subtitle {
@@ -170,7 +175,7 @@ a {
   padding: 60px 20px;
 }
 
-/* --- Thanh tìm kiếm thông minh --- */
+/* --- Thanh tìm kiếm cách điệu Dark Mode --- */
 .search-wrapper {
   margin: -70px auto 40px;
   max-width: 600px;
@@ -186,13 +191,14 @@ a {
   border-radius: 9999px;
   outline: none;
   transition: var(--transition);
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
   background: var(--bg-card);
+  color: var(--text-title);
 }
 
 .search-input:focus {
   border-color: var(--primary);
-  box-shadow: 0 0 0 5px rgba(2, 132, 199, 0.15);
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.3);
 }
 
 /* --- Tiêu đề các mục --- */
@@ -237,17 +243,22 @@ a {
   position: relative;
 }
 
+/* Hiệu ứng Hover phát sáng nhẹ khi tương tác */
 .card:hover {
   transform: translateY(-6px);
-  box-shadow: var(--shadow-lg);
-  border-color: rgba(2, 132, 199, 0.25);
+  box-shadow: 0 10px 20px rgba(168, 85, 247, 0.15);
+  border-color: rgba(168, 85, 247, 0.4);
+}
+
+.card:hover h3 a {
+  color: var(--primary-hover);
 }
 
 .card-tag {
   font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent); /* Màu xanh Cyan nổi bật trên nền tối */
   letter-spacing: 0.08em;
   margin-bottom: 10px;
 }
@@ -257,6 +268,10 @@ a {
   font-weight: 700;
   color: var(--text-title);
   margin-bottom: 10px;
+}
+
+.card h3 a {
+  color: var(--text-title);
 }
 
 .card p {
@@ -277,8 +292,9 @@ a {
   overflow: hidden;
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
-  background: #cbd5e1;
+  background: #1e1b4b; /* Nền tối chờ tải ảnh */
   aspect-ratio: 4 / 3;
+  border: 1px solid var(--border);
 }
 
 .gallery-grid img {
@@ -286,11 +302,13 @@ a {
   height: 100%;
   object-fit: cover;
   transition: var(--transition);
+  opacity: 0.82; /* Làm dịu độ chói của ảnh trên nền tối */
 }
 
 .gallery-item:hover img {
   transform: scale(1.06);
-  filter: brightness(0.95);
+  opacity: 1; /* Sáng rõ ảnh lên khi di chuột vào */
+  filter: saturate(1.1);
 }
 
 .hidden {
@@ -300,7 +318,7 @@ a {
 /* --- Tối ưu hóa trên giao diện Mobile --- */
 @media (max-width: 850px) {
   .datetime-widget {
-    display: none; /* Ẩn ngày giờ trên màn hình nhỏ để tránh chồng lấn chữ */
+    display: none;
   }
 }
 
