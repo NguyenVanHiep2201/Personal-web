@@ -1,13 +1,9 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Trang cá nhân của Nguyễn Văn Hiệp - Kỹ thuật tự động hóa, IoT, và những bài viết tản mạn."/>
+  <meta charset="UTF-8">
   <title>Trang cá nhân - NGUYỄN VĂN HIỆP</title>
-  
   <link rel="stylesheet" href="style.css">
-  <link href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/css/lightbox.min.css" rel="stylesheet">
 </head>
 <body>
 
@@ -19,124 +15,38 @@
       <li><a href="projects.html">Dự án</a></li>
       <li><a href="contact.html">Liên hệ</a></li>
     </ul>
-    
     <div class="datetime-widget" id="datetimeWidget"></div>
   </nav>
 
   <header class="hero-section">
-    <div class="avatar-wrapper">
-      <a id="avatar-link" href="08.2019.jpg" data-lightbox="avatar">
-        <img src="08.2019.jpg" alt="Nguyễn Văn Hiệp" class="avatar">
-      </a>
-    </div>
+    <img src="08.2019.jpg" alt="Avatar" class="avatar">
     <h1>NGUYỄN VĂN HIỆP</h1>
     <p class="hero-subtitle">"A journey of a thousand miles begins with a single step"</p>
   </header>
 
   <main class="container">
-    <div class="search-wrapper">
-      <input type="text" id="searchInput" class="search-input" placeholder="Tìm kiếm nhanh bài viết hoặc dự án...">
+    <input type="text" id="searchInput" style="width:100%; padding:12px; border-radius:20px; border:1px solid #ddd; margin-bottom: 20px;" placeholder="Tìm kiếm...">
+    
+    <h2 class="section-title">Dự án của tôi</h2>
+    <div class="grid-layout" id="projectList">
+      <div class="card"><h3>Thùng rác thông minh</h3><p>Dự án sử dụng ESP32...</p></div>
+      <div class="card"><h3>PLC Web Control</h3><p>Điều khiển qua Flask và Modbus...</p></div>
     </div>
-
-    <div class="section-wrapper">
-      <h2 class="section-title hidden" id="postTitle">Bài viết tìm thấy</h2>
-      <div class="grid-layout hidden" id="postList">
-        <div class="card search-item"><div class="card-tag">Tản mạn</div><h3><a href="post1.html">Bài viết 1: Cảm ơn và xin lỗi</a></h3><p>Học cách trân trọng và gắn kết các mối quan hệ xã hội đời thường...</p></div>
-        <div class="card search-item"><div class="card-tag">Tản mạn</div><h3><a href="post2.html">Bài viết 2: Lời dạy Đức Khổng Tử</a></h3><p>Những bài học sâu sắc về xây dựng nhân cách và đạo lý làm người...</p></div>
-        <div class="card search-item"><div class="card-tag">Tản mạn</div><h3><a href="post3.html">Bài viết 3: Đi tìm lý tưởng sống</a></h3><p>Hành trình nhìn nhận lại bản thân để xác định mục tiêu cuộc sống...</p></div>
-        <div class="card search-item"><div class="card-tag">Tản mạn</div><h3><a href="post4.html">Bài viết 4: Tam giáo</a></h3><p>Góc nhìn về tư tưởng giao thoa hòa hợp giữa Nho, Đạo và Phật giáo...</p></div>
-        <div class="card search-item"><div class="card-tag">Tản mạn</div><h3><a href="post5.html">Bài viết 5: Nhẫn</a></h3><p>Ý nghĩa của ẩn nhẫn, nhẫn nại giúp rèn luyện ý chí vượt nghịch cảnh...</p></div>
-        <div class="card search-item"><div class="card-tag">Tản mạn</div><h3><a href="post6.html">Bài viết 6: Sống thoải mái</a></h3><p>Giữ tâm an tịnh, đối diện tích cực trước áp lực mưu sinh cơm áo...</p></div>
-      </div>
-    </div>
-
-    <div class="section-wrapper">
-      <h2 class="section-title hidden" id="projectTitle">Dự án tìm thấy</h2>
-      <div class="grid-layout hidden" id="projectList">
-        <div class="card search-item"><div class="card-tag">Hardware / IoT</div><h3><a href="projects.html">Dự án 1: Thùng rác thông minh ESP32</a></h3><p>Đo lường mức độ rác bằng cảm biến siêu âm, xử lý dữ liệu qua EEPROM và hiển thị LCD.</p></div>
-        <div class="card search-item"><div class="card-tag">Automation</div><h3><a href="projects.html">Dự án 2: PLC Web Control Interface</a></h3><p>Xây dựng máy chủ Flask quản trị, giám sát ngõ ra I/O phần cứng PLC qua mạng Modbus TCP.</p></div>
-      </div>
-    </div>
-
-    <section class="section-wrapper">
-      <h2 class="section-title">Ký ức & Trải nghiệm</h2>
-      <div class="gallery-grid">
-        <div class="gallery-item"><a href="08.2019.jpg" data-lightbox="gallery"><img src="08.2019.jpg" alt="Kỷ niệm"></a></div>
-        <div class="gallery-item"><a href="ảnh cuối cấp 3.jpg" data-lightbox="gallery"><img src="ảnh cuối cấp 3.jpg" alt="Kỷ niệm"></a></div>
-        <div class="gallery-item"><a href="ảnh cấp 3 ba vi.jpg" data-lightbox="gallery"><img src="ảnh cấp 3 ba vi.jpg" alt="Kỷ niệm"></a></div>
-        <div class="gallery-item"><a href="ảnh nắng hoàng hôn.jpg" data-lightbox="gallery"><img src="ảnh nắng hoàng hôn.jpg" alt="Kỷ niệm"></a></div>
-        <div class="gallery-item"><a href="ảnh sông núi.jpg" data-lightbox="gallery"><img src="ảnh sông núi.jpg" alt="Kỷ niệm"></a></div>
-        <div class="gallery-item"><a href="ảnh cá nhân tốt nghiệp.jpg" data-lightbox="gallery"><img src="ảnh cá nhân tốt nghiệp.jpg" alt="Kỷ niệm"></a></div>
-        <div class="gallery-item"><a href="ảnh bằng tốt nghiệp đại học.jpg" data-lightbox="gallery"><img src="ảnh bằng tốt nghiệp đại học.jpg" alt="Kỷ niệm"></a></div>
-        <div class="gallery-item"><a href="ảnh đồi chè.jpg" data-lightbox="gallery"><img src="ảnh đồi chè.jpg" alt="Kỷ niệm"></a></div>
-        <div class="gallery-item"><a href="ảnh trường hust.jpg" data-lightbox="gallery"><img src="ảnh trường hust.jpg" alt="Kỷ niệm"></a></div>
-      </div>
-    </section>
   </main>
 
-  <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/js/lightbox.min.js"></script>
-  
   <script>
     function updateDateTime() {
       const now = new Date();
+      const timeStr = now.toLocaleTimeString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh' });
+      const dateStr = now.toLocaleDateString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh' });
+      const lunarStr = new Intl.DateTimeFormat('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', calendar: 'chinese', day: 'numeric', month: 'numeric' }).format(now);
       
-      // Lấy thời gian hiện tại (Múi giờ Hà Nội)
-      const timeStr = now.toLocaleTimeString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', hour: '2-digit', minute: '2-digit', second: '2-digit' });
-      const solarDateStr = now.toLocaleDateString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', day: '2-digit', month: '2-digit', year: 'numeric' });
-      
-      // Lấy ngày âm lịch (sử dụng Intl API có sẵn trên trình duyệt hiện đại)
-      let lunarStr = "";
-      try {
-        lunarStr = new Intl.DateTimeFormat('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', calendar: 'chinese', day: 'numeric', month: 'numeric' }).format(now);
-      } catch (e) {
-        lunarStr = "N/A"; // Đề phòng trình duyệt cũ không hỗ trợ
-      }
-
-      // Hiển thị ra HTML
       document.getElementById('datetimeWidget').innerHTML = 
-        `<div style="font-weight: 700; color: var(--primary); font-size: 1rem;">Hà Nội: ${timeStr}</div>
-         <div style="font-size: 0.8rem; color: var(--text-muted);">DL: ${solarDateStr} &nbsp;|&nbsp; ÂL: ${lunarStr}</div>`;
+        `<div style="font-weight:bold; color:var(--primary)">${timeStr}</div>
+         <div style="font-size:0.75rem">DL: ${dateStr} | ÂL: ${lunarStr}</div>`;
     }
-    
-    // Cập nhật đồng hồ mỗi 1 giây (1000ms)
     setInterval(updateDateTime, 1000);
     updateDateTime();
-  </script>
-
-  <script>
-    const searchInput = document.getElementById("searchInput");
-    const items = document.querySelectorAll(".search-item");
-    const postList = document.getElementById("postList");
-    const projectList = document.getElementById("projectList");
-    const postTitle = document.getElementById("postTitle");
-    const projectTitle = document.getElementById("projectTitle");
-
-    searchInput.addEventListener("input", function () {
-      const keyword = this.value.toLowerCase().trim();
-      let hasPost = false, hasProject = false;
-
-      if(keyword === "") {
-        postList.classList.add("hidden"); postTitle.classList.add("hidden");
-        projectList.classList.add("hidden"); projectTitle.classList.add("hidden");
-        return;
-      }
-
-      items.forEach(item => {
-        const text = item.textContent.toLowerCase();
-        const isMatch = text.includes(keyword);
-        
-        if (isMatch) {
-          item.classList.remove("hidden");
-          if (item.parentElement === postList) hasPost = true;
-          if (item.parentElement === projectList) hasProject = true;
-        } else {
-          item.classList.add("hidden");
-        }
-      });
-
-      postList.classList.toggle("hidden", !hasPost); postTitle.classList.toggle("hidden", !hasPost);
-      projectList.classList.toggle("hidden", !hasProject); projectTitle.classList.toggle("hidden", !hasProject);
-    });
   </script>
 </body>
 </html>
