@@ -31,7 +31,7 @@
     </div>
     <h1>NGUYỄN VĂN HIỆP</h1>
     <p class="hero-subtitle">"A journey of a thousand miles begins with a single step"</p>
-</header>
+  </header>
 
   <main class="container">
     <div class="search-wrapper">
@@ -42,7 +42,7 @@
       <h2 class="section-title hidden" id="postTitle">Bài viết tìm thấy</h2>
       <div class="grid-layout hidden" id="postList">
         <div class="card search-item"><div class="card-tag">Tản mạn</div><h3><a href="post1.html">Bài viết 1: Cảm ơn và xin lỗi</a></h3><p>Học cách trân trọng và gắn kết các mối quan hệ xã hội đời thường...</p></div>
-        <div class="card search-item"><div class="card-tag">Tản mạn</div><h3><a href="post2.html">Bài viết 2: Lời dạy Đức Khổng Tử</a></h3><p>Những bài học sâu sắc về xây dựng nhân cách và đạo lý làm người...</p></div>
+        <div class="card search-item"><div class="card-tag">Tản mạn</div><h3><a href="post2.html">Lời dạy Đức Khổng Tử</a></h3><p>Những bài học sâu sắc về xây dựng nhân cách và đạo lý làm người...</p></div>
         <div class="card search-item"><div class="card-tag">Tản mạn</div><h3><a href="post3.html">Bài viết 3: Đi tìm lý tưởng sống</a></h3><p>Hành trình nhìn nhận lại bản thân để xác định mục tiêu cuộc sống...</p></div>
         <div class="card search-item"><div class="card-tag">Tản mạn</div><h3><a href="post4.html">Bài viết 4: Tam giáo</a></h3><p>Góc nhìn về tư tưởng giao thoa hòa hợp giữa Nho, Đạo và Phật giáo...</p></div>
         <div class="card search-item"><div class="card-tag">Tản mạn</div><h3><a href="post5.html">Bài viết 5: Nhẫn</a></h3><p>Ý nghĩa của ẩn nhẫn, nhẫn nại giúp rèn luyện ý chí vượt nghịch cảnh...</p></div>
@@ -74,31 +74,33 @@
     </section>
   </main>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/js/lightbox.min.js"></script>
   
   <script>
     function updateDateTime() {
       const now = new Date();
       
-      // Lấy thời gian hiện tại (Múi giờ Hà Nội)
+      // Định dạng Giờ - Phút - Giây theo múi giờ Hà Nội
       const timeStr = now.toLocaleTimeString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', hour: '2-digit', minute: '2-digit', second: '2-digit' });
+      // Định dạng Ngày Dương lịch
       const solarDateStr = now.toLocaleDateString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', day: '2-digit', month: '2-digit', year: 'numeric' });
       
-      // Lấy ngày âm lịch (sử dụng Intl API có sẵn trên trình duyệt hiện đại)
+      // Tính toán ngày Âm lịch tự động qua cơ chế quốc tế Intl
       let lunarStr = "";
       try {
         lunarStr = new Intl.DateTimeFormat('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', calendar: 'chinese', day: 'numeric', month: 'numeric' }).format(now);
       } catch (e) {
-        lunarStr = "N/A"; // Đề phòng trình duyệt cũ không hỗ trợ
+        lunarStr = "N/A";
       }
 
-      // Hiển thị ra HTML
+      // Đẩy dữ liệu ra ngoài giao diện
       document.getElementById('datetimeWidget').innerHTML = 
-        `<div style="font-weight: 700; color: var(--primary); font-size: 1rem;">Hà Nội: ${timeStr}</div>
-         <div style="font-size: 0.8rem; color: var(--text-muted);">DL: ${solarDateStr} &nbsp;|&nbsp; ÂL: ${lunarStr}</div>`;
+        `<div style="font-weight: 700; color: var(--primary); font-size: 0.95rem;">Hà Nội: ${timeStr}</div>
+         <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 500;">DL: ${solarDateStr} &nbsp;|&nbsp; ÂL: ${lunarStr}</div>`;
     }
     
-    // Cập nhật đồng hồ mỗi 1 giây (1000ms)
+    // Cập nhật đồng hồ chạy liên tục mỗi giây
     setInterval(updateDateTime, 1000);
     updateDateTime();
   </script>
@@ -115,6 +117,7 @@
       const keyword = this.value.toLowerCase().trim();
       let hasPost = false, hasProject = false;
 
+      // Nếu ô tìm kiếm trống, ẩn toàn bộ phân khu bài viết/dự án tìm thấy đi
       if(keyword === "") {
         postList.classList.add("hidden"); postTitle.classList.add("hidden");
         projectList.classList.add("hidden"); projectTitle.classList.add("hidden");
@@ -134,6 +137,7 @@
         }
       });
 
+      // Hiển thị hoặc ẩn phân khu tùy thuộc vào kết quả tìm kiếm trùng khớp
       postList.classList.toggle("hidden", !hasPost); postTitle.classList.toggle("hidden", !hasPost);
       projectList.classList.toggle("hidden", !hasProject); projectTitle.classList.toggle("hidden", !hasProject);
     });
