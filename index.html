@@ -7,7 +7,6 @@
   <title>Trang cá nhân - NGUYỄN VĂN HIỆP</title>
   
   <link rel="stylesheet" href="style.css">
-  
   <link href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/css/lightbox.min.css" rel="stylesheet">
 </head>
 <body>
@@ -20,6 +19,8 @@
       <li><a href="projects.html">Dự án</a></li>
       <li><a href="contact.html">Liên hệ</a></li>
     </ul>
+    
+    <div class="datetime-widget" id="datetimeWidget"></div>
   </nav>
 
   <header class="hero-section">
@@ -30,14 +31,6 @@
     </div>
     <h1>NGUYỄN VĂN HIỆP</h1>
     <p class="hero-subtitle">"A journey of a thousand miles begins with a single step"</p>
-    
-    <div class="skills-container">
-      <span class="skill-badge">Embedded C/C++</span>
-      <span class="skill-badge">ESP32 & IoT Systems</span>
-      <span class="skill-badge">Industrial Automation (PLC)</span>
-      <span class="skill-badge">Modbus TCP Protocol</span>
-      <span class="skill-badge">Flask Web Interface</span>
-    </div>
   </header>
 
   <main class="container">
@@ -82,6 +75,34 @@
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/js/lightbox.min.js"></script>
+  
+  <script>
+    function updateDateTime() {
+      const now = new Date();
+      
+      // Lấy thời gian hiện tại (Múi giờ Hà Nội)
+      const timeStr = now.toLocaleTimeString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', hour: '2-digit', minute: '2-digit', second: '2-digit' });
+      const solarDateStr = now.toLocaleDateString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', day: '2-digit', month: '2-digit', year: 'numeric' });
+      
+      // Lấy ngày âm lịch (sử dụng Intl API có sẵn trên trình duyệt hiện đại)
+      let lunarStr = "";
+      try {
+        lunarStr = new Intl.DateTimeFormat('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', calendar: 'chinese', day: 'numeric', month: 'numeric' }).format(now);
+      } catch (e) {
+        lunarStr = "N/A"; // Đề phòng trình duyệt cũ không hỗ trợ
+      }
+
+      // Hiển thị ra HTML
+      document.getElementById('datetimeWidget').innerHTML = 
+        `<div style="font-weight: 700; color: var(--primary); font-size: 1rem;">Hà Nội: ${timeStr}</div>
+         <div style="font-size: 0.8rem; color: var(--text-muted);">DL: ${solarDateStr} &nbsp;|&nbsp; ÂL: ${lunarStr}</div>`;
+    }
+    
+    // Cập nhật đồng hồ mỗi 1 giây (1000ms)
+    setInterval(updateDateTime, 1000);
+    updateDateTime();
+  </script>
+
   <script>
     const searchInput = document.getElementById("searchInput");
     const items = document.querySelectorAll(".search-item");
