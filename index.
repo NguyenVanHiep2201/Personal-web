@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Trang cá nhân của Nguyễn Văn Hiệp - Kỹ thuật tự động hóa, IoT, và những bài viết tản mạn."/>
+  <title>Trang cá nhân - NGUYỄN VĂN HIỆP</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/css/lightbox.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <nav class="navbar">
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Trang chủ</a></li>
+      <li><a href="about.html">Giới thiệu</a></li>
+      <li><a href="blogs.html">Bài viết</a></li>
+      <li><a href="projects.html">Dự án</a></li>
+      <li><a href="contact.html">Liên hệ</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <div class="profile-header">
+      <a id="avatar-link" href="08.2019.jpg" data-lightbox="avatar">
+        <img src="08.2019.jpg" alt="Nguyễn Văn Hiệp" class="avatar">
+      </a>
+      <h1>NGUYỄN VĂN HIỆP</h1>
+      <p class="tagline">"A journey of a thousand miles begins with a single step"</p>
+    </div>
+
+    <!-- Tìm kiếm -->
+    <div class="search-wrapper">
+      <input type="text" id="searchInput" class="search-input" placeholder="Tìm kiếm nhanh bài viết hoặc dự án...">
+    </div>
+
+    <!-- Kết quả tìm kiếm -->
+    <div class="section-title hidden" id="postTitle">Bài viết</div>
+    <div class="grid-layout hidden" id="postList">
+      <div class="card search-item"><p>Tản mạn</p><h3><a href="post1.html">Bài viết 1: Cảm ơn và xin lỗi</a></h3></div>
+      <div class="card search-item"><p>Tản mạn</p><h3><a href="post2.html">Bài viết 2: Lời dạy Đức Khổng Tử</a></h3></div>
+      <div class="card search-item"><p>Tản mạn</p><h3><a href="post3.html">Bài viết 3: Đi tìm lý tưởng sống</a></h3></div>
+      <div class="card search-item"><p>Tản mạn</p><h3><a href="post4.html">Bài viết 4: Tam giáo</a></h3></div>
+      <div class="card search-item"><p>Tản mạn</p><h3><a href="post5.html">Bài viết 5: Nhẫn</a></h3></div>
+      <div class="card search-item"><p>Tản mạn</p><h3><a href="post6.html">Bài viết 6: Sống thoải mái</a></h3></div>
+    </div>
+
+    <div class="section-title hidden" id="projectTitle">Dự án</div>
+    <div class="grid-layout hidden" id="projectList">
+      <div class="card search-item"><p>Hardware/IoT</p><h3><a href="project1.html">Dự án 1: Thùng rác thông minh ESP32</a></h3></div>
+      <div class="card search-item"><p>Web App/PLC</p><h3><a href="project2.html">Dự án 2: Web Control công nghiệp</a></h3></div>
+    </div>
+
+    <!-- Thư viện ảnh -->
+    <div class="section-title">Ký ức & Trải nghiệm</div>
+    <div class="gallery-grid">
+      <a href="08.2019.jpg" data-lightbox="gallery"><img src="08.2019.jpg"></a>
+      <a href="ảnh cuối cấp 3.jpg" data-lightbox="gallery"><img src="ảnh cuối cấp 3.jpg"></a>
+      <a href="ảnh cấp 3 ba vi.jpg" data-lightbox="gallery"><img src="ảnh cấp 3 ba vi.jpg"></a>
+      <a href="ảnh nắng hoàng hôn.jpg" data-lightbox="gallery"><img src="ảnh nắng hoàng hôn.jpg"></a>
+      <a href="ảnh sông núi.jpg" data-lightbox="gallery"><img src="ảnh sông núi.jpg"></a>
+      <a href="ảnh cá nhân tốt nghiệp.jpg" data-lightbox="gallery"><img src="ảnh cá nhân tốt nghiệp.jpg"></a>
+      <a href="ảnh bằng tốt nghiệp đại học.jpg" data-lightbox="gallery"><img src="ảnh bằng tốt nghiệp đại học.jpg"></a>
+      <a href="ảnh đồi chè.jpg" data-lightbox="gallery"><img src="ảnh đồi chè.jpg"></a>
+      <a href="ảnh trường hust.jpg" data-lightbox="gallery"><img src="ảnh trường hust.jpg"></a>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/js/lightbox.min.js"></script>
+  <script>
+    const searchInput = document.getElementById("searchInput");
+    const items = document.querySelectorAll(".search-item");
+    const postList = document.getElementById("postList");
+    const projectList = document.getElementById("projectList");
+    const postTitle = document.getElementById("postTitle");
+    const projectTitle = document.getElementById("projectTitle");
+
+    searchInput.addEventListener("input", function () {
+      const keyword = this.value.toLowerCase().trim();
+      let hasPost = false, hasProject = false;
+
+      if(keyword === "") {
+        postList.classList.add("hidden"); postTitle.classList.add("hidden");
+        projectList.classList.add("hidden"); projectTitle.classList.add("hidden");
+        return;
+      }
+
+      items.forEach(item => {
+        const text = item.textContent.toLowerCase();
+        const isMatch = text.includes(keyword);
+        
+        if (isMatch) {
+          item.classList.remove("hidden");
+          if (item.parentElement === postList) hasPost = true;
+          if (item.parentElement === projectList) hasProject = true;
+        } else {
+          item.classList.add("hidden");
+        }
+      });
+
+      postList.classList.toggle("hidden", !hasPost); postTitle.classList.toggle("hidden", !hasPost);
+      projectList.classList.toggle("hidden", !hasProject); projectTitle.classList.toggle("hidden", !hasProject);
+    });
+  </script>
+</body>
+</html>
