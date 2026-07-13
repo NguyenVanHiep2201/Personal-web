@@ -1,6 +1,5 @@
 /* --- Hệ thống màu sắc & Biến cấu trúc --- */
 :root {
-  /* TÔNG 1: DEEP TECH BLUE (Mặc định - Xanh công nghệ và Xanh ngọc lục bảo) */
   --primary: #0284c7;       /* Xanh bầu trời đậm - uy tín, chuyên nghiệp */
   --primary-hover: #0369a1;
   --accent: #10b981;        /* Xanh Emerald - tạo điểm nhấn năng động, công nghệ */
@@ -22,23 +21,6 @@
   --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
-/* Mẹo nhỏ: Nếu bạn muốn đổi sang TÔNG 2: CYBERPUNK DARK (Huyền bí, đậm chất lập trình viên)
-   Hãy xóa các biến màu ở trên và bỏ dấu ẩn của các dòng dưới đây:
-   
-   :root {
-     --primary: #a855f7;  
-     --primary-hover: #9333ea;
-     --accent: #3b82f6;   
-     --gradient-hero: linear-gradient(135deg, #090514 0%, #120a2a 100%);
-     --bg-main: #0f0c1b;
-     --bg-card: #151026;
-     --text-title: #f8fafc;
-     --text-body: #cbd5e1;
-     --text-muted: #94a3b8;
-     --border: #241b42;
-   }
-*/
 
 /* --- Reset & Base Styles --- */
 * {
@@ -62,7 +44,7 @@ a {
   transition: var(--transition);
 }
 
-/* --- Navigation Bar (Hiệu ứng kính mờ cao cấp) --- */
+/* --- Navigation Bar (Hiệu ứng kính mờ có chứa Widget Ngày Giờ) --- */
 .navbar {
   position: sticky;
   top: 0;
@@ -103,19 +85,43 @@ a {
   box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
 }
 
-/* --- Hero Section (Đổi sang nền tối Gradient tương phản mạnh) --- */
-/* Thu hẹp khoảng cách trên dưới của phần tiêu đề */
+/* --- Tiện ích Ngày Giờ ở góc phải trên cùng --- */
+.datetime-widget {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: right;
+  line-height: 1.3;
+}
+
+/* --- Hero Section (Đã THU HẸP vừa vặn theo yêu cầu) --- */
 .hero-section {
   background: var(--gradient-hero);
-  padding: 60px 20px 40px; /* Giảm từ 100px/80px xuống còn 60px/40px */
+  padding: 50px 20px 40px; /* Thu hẹp từ 100px xuống 50px để vừa vặn */
   text-align: center;
   position: relative;
 }
 
-/* Thu nhỏ avatar lại một chút để không bị chiếm diện tích quá lớn */
+.avatar-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 16px; /* Giảm khoảng cách hạ xuống chữ */
+}
+
+.avatar-wrapper::after {
+  content: '';
+  position: absolute;
+  top: -4px; left: -4px; right: -4px; bottom: -4px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, var(--primary), var(--accent));
+  z-index: 1;
+  animation: spin 8s linear infinite;
+}
+
 .avatar {
-  width: 120px; /* Giảm từ 150px xuống 120px */
-  height: 120px;
+  width: 110px;  /* Thu nhỏ từ 160px xuống 110px cho cân đối */
+  height: 110px; /* Thu nhỏ từ 160px xuống 110px cho cân đối */
   border-radius: 50%;
   border: 4px solid #0f172a;
   box-shadow: var(--shadow-lg);
@@ -125,47 +131,24 @@ a {
   transition: var(--transition);
 }
 
-/* Căn chỉnh lại tên và câu quote cho hài hòa */
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
 .hero-section h1 {
-  font-size: 2.2rem; /* Giảm cỡ chữ tiêu đề */
+  font-size: 2.2rem; /* Giảm từ 3rem xuống 2.2rem để bớt thô */
   font-weight: 800;
   color: #ffffff;
-  margin-bottom: 10px;
+  letter-spacing: -0.03em;
+  margin-bottom: 8px;
 }
 
 .hero-subtitle {
-  font-size: 1rem; /* Giảm cỡ chữ câu quote */
+  font-size: 1rem; /* Điều chỉnh font chữ vừa vặn */
   color: #94a3b8;
   font-style: italic;
-  max-width: 500px; /* Giới hạn độ rộng để chữ không bị tràn */
-  margin: 0 auto 20px;
-}
-/* --- Skills Tags (Bo tròn thanh lịch) --- */
-.skills-container {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  max-width: 800px;
+  max-width: 500px;
   margin: 0 auto;
-}
-
-.skill-badge {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #e2e8f0;
-  padding: 8px 18px;
-  border-radius: 30px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  backdrop-filter: blur(4px);
-  transition: var(--transition);
-}
-
-.skill-badge:hover {
-  background: white;
-  color: var(--text-title);
-  transform: translateY(-2px);
 }
 
 /* --- Layout Container --- */
@@ -177,7 +160,7 @@ a {
 
 /* --- Thanh tìm kiếm cách điệu --- */
 .search-wrapper {
-  margin: -90px auto 60px;
+  margin: -70px auto 40px; /* Điều chỉnh lại khoảng cách đè lên Header cho khít */
   max-width: 600px;
   position: relative;
   z-index: 10;
@@ -302,26 +285,16 @@ a {
   display: none !important;
 }
 
-/* --- Responsive thiết bị di động --- */
-@media (max-width: 640px) {
-  .hero-section { padding: 80px 20px 60px; }
-  .hero-section h1 { font-size: 2.2rem; }
-  .search-wrapper { margin-top: -40px; margin-bottom: 40px; }
-  .grid-layout { grid-template-columns: 1fr; }
-}
-/* --- Tiện ích Ngày Giờ (Date Time Widget) --- */
-.datetime-widget {
-  position: absolute;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  text-align: right;
-  line-height: 1.3;
-}
-
-/* Ẩn widget ngày giờ trên màn hình điện thoại nhỏ để không đè vào menu */
+/* --- Responsive cho thiết bị di động --- */
 @media (max-width: 850px) {
   .datetime-widget {
-    display: none; 
+    display: none; /* Ẩn widget ngày giờ trên màn hình nhỏ để tránh đè chữ menu */
   }
+}
+
+@media (max-width: 640px) {
+  .hero-section { padding: 40px 20px 30px; }
+  .hero-section h1 { font-size: 1.8rem; }
+  .search-wrapper { margin-top: -30px; margin-bottom: 40px; }
+  .grid-layout { grid-template-columns: 1fr; }
 }
