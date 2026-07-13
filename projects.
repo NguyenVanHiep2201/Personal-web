@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Các dự án đã thực hiện</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <ul class="nav-links">
+      <li><a href="index.html">Trang chủ</a></li>
+      <li><a href="about.html">Giới thiệu</a></li>
+      <li><a href="blogs.html">Bài viết</a></li>
+      <li><a href="projects.html" class="active">Dự án</a></li>
+      <li><a href="contact.html">Liên hệ</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <div class="profile-header">
+      <h1>Các Dự Án Đã Thực Hiện</h1>
+      <p class="tagline">Hệ thống nhúng, Tự động hóa và Ứng dụng điều khiển</p>
+    </div>
+
+    <div class="grid-layout">
+      <div class="card">
+        <div>
+          <span style="font-size:0.8rem; color:var(--primary-color); font-weight:600;">C++ / ESP32</span>
+          <h3 style="margin-top:5px;"><a href="#">Dự án 1: Thùng rác thông minh</a></h3>
+          <p>Hệ thống tự động sử dụng mạch ESP32 và cảm biến siêu âm để đo lường mức độ rác. Hiển thị thông số trực quan qua progress bar trên màn hình LCD và tích hợp lưu trữ hiệu chuẩn qua bộ nhớ EEPROM.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <span style="font-size:0.8rem; color:var(--primary-color); font-weight:600;">Python / Flask / PLC</span>
+          <h3 style="margin-top:5px;"><a href="#">Dự án 2: PLC Web Control</a></h3>
+          <p>Xây dựng web server giám sát và điều khiển giao tiếp trực tiếp với phần cứng công nghiệp (PLC). Hỗ trợ điều khiển I/O qua môi trường mạng, ứng dụng giao thức Modbus TCP.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <span style="font-size:0.8rem; color:var(--primary-color); font-weight:600;">Nghiên cứu / Đồ án</span>
+          <h3 style="margin-top:5px;"><a href="#">Dự án 3: Hệ thống cảm biến (Báo cáo tốt nghiệp)</a></h3>
+          <p>Nghiên cứu, thu thập và trực quan hóa dữ liệu môi trường thực tế thông qua các module cảm biến ánh sáng và cảm biến áp suất không khí (barometer) phục vụ đo đạc số liệu khoa học.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
