@@ -321,7 +321,28 @@ a {
     display: none;
   }
 }
+/* --- Tối ưu hóa Menu trên giao diện di động (Mobile Responsive) --- */
+@media (max-width: 640px) {
+  .navbar {
+    padding: 12px 10px; /* Thu hẹp khoảng cách viền của thanh menu */
+  }
 
+  .nav-links {
+    gap: 4px; /* Thu hẹp khoảng cách giữa các nút */
+    width: 100%;
+    justify-content: space-around; /* Phân bổ đều các nút trên chiều ngang điện thoại */
+  }
+
+  .nav-links a {
+    font-size: 0.8rem; /* Thu nhỏ cỡ chữ một chút để không bị tràn dòng */
+    padding: 6px 8px; /* Giảm khoảng đệm xung quanh chữ */
+    white-space: nowrap; /* Ngăn chặn tuyệt đối việc chữ bị tự động xuống dòng */
+  }
+
+  .nav-links a.active {
+    box-shadow: 0 2px 8px rgba(168, 85, 247, 0.3); /* Thu nhỏ hiệu ứng bóng đổ cho vừa vặn */
+  }
+}
 @media (max-width: 640px) {
   .hero-section { padding: 40px 20px 30px; }
   .hero-section h1 { font-size: 1.8rem; }
