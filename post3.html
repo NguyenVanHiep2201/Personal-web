@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bài viết 3: CUỘC SỐNG</title>
+  
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f9f9f9;
+      color: #333;
+      text-align: center;
+      padding: 60px 20px; 
+      max-width: 800px;
+      margin: auto;
+    }
+
+    h1 {
+      color: #4e54c8;
+    }
+
+    .content {
+      margin-top: 20px;
+      text-align: left;
+      padding: 20px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    p {
+      line-height: 1.6;
+    }
+
+    /* Thêm biểu tượng ngôi nhà */
+    .home-icon {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      font-size: 28px;
+      background: #4e54c8;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 50%;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      text-decoration: none;
+      z-index: 999;
+    }
+
+    .interactions {
+      margin-top: 40px;
+      text-align: center;
+    }
+    .reaction-btn {
+      font-size: 20px;
+      margin: 8px;
+      cursor: pointer;
+      padding: 10px 20px;
+      border-radius: 30px;
+      background: #eee;
+      display: inline-block;
+      transition: background 0.3s;
+    }
+    .reaction-btn:hover {
+      background: #d0d0ff;
+    }
+    .reaction-count {
+      display: inline-block;
+      margin-left: 6px;
+      font-size: 14px;
+      color: #666;
+    }
+    .total-reactions {
+      margin-top: 16px;
+      font-size: 16px;
+      color: #555;
+    }
+    .comment-section {
+      margin-top: 40px;
+      text-align: left;
+    }
+    .comment-section h3 {
+      color: #4e54c8;
+    }
+    .comment-section textarea {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+    .comment-section button {
+      margin-top: 10px;
+      background: #4e54c8;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .comment-section button:hover {
+      background: #3a3fc4;
+    }
+    .comments-list {
+      margin-top: 20px;
+    }
+    .comment {
+      background: #fff;
+      padding: 12px;
+      margin-bottom: 10px;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Biểu tượng ngôi nhà quay về trang chủ -->
+  <a href="index.html" class="home-icon" title="Về trang chủ">🏠</a>
+
+  <h1>CUỘC SỐNG</h1>
+  <div class="content">
+    <h2>Những câu nói hài hước về cuộc sống</h2>
+    <p>Tiền không mua được tất cả nhưng không có tiền thì vất vả, thế thôi.</p>
+    <p>Người ngốc muốn tận tình giúp đỡ ta còn nguy hiểm hơn cả kẻ thù.</p>
+    <p>Thời gian là vị bác sĩ giỏi nhưng lại là người trang điểm tồi.</p>
+    <p>Ánh sáng đi trước âm thanh, vì thế, con người ta trông có vẻ thông minh cho đến khi ta nghe họ phát biểu.</p>
+    <p>Lương tâm là cái gì đó cảm thấy tổn thương trong khi các phần khác của cơ thể cảm thấy dễ chịu.</p>
+    <p>Cuộc sống giống như một cuốn sách, có những trang vui, những trang buồn và cả những trang mà bạn không thể hiểu gì cả!</p>
+    <p>Cuộc đời tôi đang ở cái giai đoạn mà tôi sẽ né mọi loại tranh luận cho nhẹ đầu. Kể cả khi bạn bảo 1 + 1 = 5. Bạn nói chuẩn, xuất sắc!</p>
+    <p>Cuộc đời ngắn lắm, hãy cười khi bạn vẫn còn răng.</p>
+
+    <hr>
+    <h2>CUỘC SỐNG BUỒN</h2>
+    <p>Điều đáng sợ nhất đối với mỗi người là mỗi ngày thức dậy. Và nhận ra trong cuộc sống mình không có người và điều gì để chờ đợi, cố gắng.</p>
+    <p>Cuộc sống đầy ắp những việc không như ý, chúng ta chẳng thể nào né tránh. Điều duy nhất có thể làm là thay đổi góc nhìn về nó.</p>
+    <p>Không phải vết thương nào cũng chảy máu. Và cũng không phải không chảy máu là không bị đau.</p>
+    <p>Đôi khi, bạn phải trải qua những cảm giác buồn để thực sự hiểu giá trị của niềm vui.</p>
+    <p>Buồn khôn xiết không phải là dấu hiệu thất bại, mà là bài học để ta trở nên mạnh mẽ hơn.</p>
+
+    <hr>
+    <h2>CUỘC SỐNG MƯU SINH</h2>
+    <p>Cuộc sống không phải lúc nào cũng màu hồng, muốn thấy cầu vồng phải chấp nhận những cơn mưa.</p>
+    <p>Khi tất cả mọi thứ dường như chống lại bạn, hãy nhớ rằng máy bay cất cánh được nhờ ngược chiều gió.</p>
+    <p>Bạn sẽ không bao giờ đạt đến đích nếu bạn cứ đứng lại và ném đá vào mỗi con chó trên đường, chỉ vì tiếng sủa của chúng.</p>
+    <p>Cuộc sống cũng giống như một trận đấu quyền anh. Thất bại không phải là khi bạn gục ngã, mà là khi bạn từ chối đứng dậy lần nữa.</p>
+    <p>Bốn nguyên tắc vàng trong cuộc sống: Trung thực khi nghèo khó, Giản dị khi giàu có, Lịch sự khi có uy quyền, Im lặng khi giận dữ.</p>
+    <p>Người sống nhiều nhất không phải người sống lâu năm nhất mà là người có nhiều trải nghiệm phong phú nhất.</p>
+  </div>
+
+  <div class="interactions">
+    <div class="reaction-btn" onclick="react('heart')">❤️ <span class="reaction-count" id="heartCount">0</span></div>
+    <div class="reaction-btn" onclick="react('like')">👍 <span class="reaction-count" id="likeCount">0</span></div>
+    <div class="reaction-btn" onclick="react('dislike')">👎 <span class="reaction-count" id="dislikeCount">0</span></div>
+    <div class="total-reactions">
+      Tổng lượt tương tác: <strong id="totalReactions">0</strong>
+    </div>
+  </div>
+
+  <div class="comment-section">
+    <h3>Bình luận</h3>
+    <textarea id="commentInput" rows="3" placeholder="Nhập bình luận của bạn..."></textarea>
+    <button onclick="addComment()">Gửi bình luận</button>
+    <div class="comments-list" id="commentsList"></div>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
+    import { getDatabase, ref, get, set, push, onValue } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCFkirbAebFrQf6HkBtGvs5Yb-PfMiEcNU",
+      authDomain: "person-pages.firebaseapp.com",
+      projectId: "person-pages",
+      storageBucket: "person-pages.firebasestorage.app",
+      messagingSenderId: "262938467134",
+      appId: "1:262938467134:web:afaf4ff5bb21f17fbf2a6f",
+      measurementId: "G-QE88C5LG63"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    const postId = "post-3"; // <-- ID duy nhất cho bài viết này
+
+    const heartCountEl = document.getElementById("heartCount");
+    const likeCountEl = document.getElementById("likeCount");
+    const dislikeCountEl = document.getElementById("dislikeCount");
+    const totalReactionsEl = document.getElementById("totalReactions");
+
+    // Lắng nghe realtime thay đổi phản hồi
+    function listenReactions() {
+      const reactionsRef = ref(db, `posts/${postId}/reactions`);
+      onValue(reactionsRef, (snapshot) => {
+        const data = snapshot.val() || {};
+        const heart = data.heart || 0;
+        const like = data.like || 0;
+        const dislike = data.dislike || 0;
+        heartCountEl.textContent = heart;
+        likeCountEl.textContent = like;
+        dislikeCountEl.textContent = dislike;
+        totalReactionsEl.textContent = heart + like + dislike;
+      });
+    }
+
+    // Gửi phản hồi
+    function react(type) {
+      const typeRef = ref(db, `posts/${postId}/reactions/${type}`);
+      get(typeRef).then(snapshot => {
+        const current = snapshot.exists() ? snapshot.val() : 0;
+        set(typeRef, current + 1);
+      });
+    }
+
+    // Lắng nghe bình luận
+    function listenComments() {
+      const commentsRef = ref(db, `posts/${postId}/comments`);
+      onValue(commentsRef, (snapshot) => {
+        const comments = snapshot.val() || {};
+        const container = document.getElementById("commentsList");
+        container.innerHTML = "";
+        const entries = Object.values(comments).reverse(); // đảo ngược cho mới lên đầu
+        entries.forEach(comment => {
+          const div = document.createElement("div");
+          div.className = "comment";
+          div.innerHTML = `<strong>${comment.time}</strong><br>${comment.text}`;
+          container.appendChild(div);
+        });
+      });
+    }
+
+    // Thêm bình luận
+    function addComment() {
+      const input = document.getElementById("commentInput");
+      const text = input.value.trim();
+      if (!text) return;
+      const commentsRef = ref(db, `posts/${postId}/comments`);
+      push(commentsRef, {
+        text: text,
+        time: new Date().toLocaleString()
+      });
+      input.value = "";
+    }
+
+    window.react = react;
+    window.addComment = addComment;
+
+    listenReactions();
+    listenComments();
+  </script>
+</body>
+</html>
